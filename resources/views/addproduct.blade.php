@@ -12,7 +12,7 @@
                                 <div class="form-group d-flex pt-5">
                                     <label class="pt-2" for="productname">New Product Name:&nbsp;&nbsp;</label>
                                     <input type="text" name="productname" class="form-control mb-5 w-50"
-                                        placeholder="Enter new product name" required>
+                                        placeholder="Enter new product name" required autofocus>
                                 </div>
                                 <table id="dynamic_table" class="mt-3 table table-info table-bordered table-striped">
                                     <thead>
@@ -27,7 +27,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td><input class="form-control" type="text" name="productcode[]" required></td>
+                                            <td><input class="form-control" type="text" name="productcode[]" disabled></td>
                                             <td><input class="form-control" type="text" name="color[]" required></td>
                                             <td><input class="form-control" type="text" name="size[]" required></td>
                                             <td><input class="form-control" type="text" name="quantity[]" required></td>
@@ -72,7 +72,7 @@
 
             $('#addmore').click(function() {
                 i++;
-                $('#dynamic_table').append('<tr id="row' + i + '"><td><input class="form-control" type="text" name="productcode[]" required></td><td><input class="form-control" type="text" name="color[]" required></td><td><input class="form-control" type="text" name="size[]" required></td><td><input class="form-control" type="text" name="quantity[]" required></td><td><input class="form-control" type="text" name="price[]" required></td><td><button type="button" name="remove" id="' + i + '" class="btn btn-danger d-flex btn_remove"><i class="far fa-trash-alt"></i>&nbsp;&nbsp;Delete</button></td></tr>');
+                $('#dynamic_table').append('<tr id="row' + i + '"><td><input class="form-control" type="text" name="productcode[] disabled"></td><td><input class="form-control" type="text" name="color[]" required></td><td><input class="form-control" type="text" name="size[]" required></td><td><input class="form-control" type="text" name="quantity[]" required></td><td><input class="form-control" type="text" name="price[]" required></td><td><button type="button" name="remove" id="' + i + '" class="btn btn-danger d-flex btn_remove"><i class="far fa-trash-alt"></i>&nbsp;&nbsp;Delete</button></td></tr>');
             });
 
             $(document).on('click', '.btn_remove', function() {

@@ -6,6 +6,7 @@ use App\Models\ProductCategory;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Haruncpi\LaravelIdGenerator\IdGenerator;
 
 class ProductCategoryController extends Controller
 {
@@ -38,6 +39,8 @@ class ProductCategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $product_code = IdGenerator::generate(['table' => 'product_categories', 'field' => 'product_code', 'length' => 13, 'prefix' => 'Product-']);
+
         Product::create(['product' => $request->productname]);
 
         $product_id = 'App\Models\Product'::where('product', $request->productname)->first()->id;
@@ -47,7 +50,7 @@ class ProductCategoryController extends Controller
         for ($i = 0; $i < $arraycount; $i++) {
             ProductCategory::create([
                 'product_id' => $product_id,
-                'product_code' => $request->productcode[$i],
+                'product_code' => $product_code,
                 'color' => $request->color[$i],
                 'size' => $request->size[$i],
                 'quantity' => $request->quantity[$i],
