@@ -15,7 +15,7 @@
                             <label for="login" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address or Username') }}</label>
 
                             <div class="col-md-6">
-                                <input id="login" type="text" class="form-control{{ $errors->has('username') || $errors->has('email') ? ' is-invalid' : '' }}" name="login" value="{{ old('username') ?: old('email') }}" required autofocus>
+                                <input id="login" type="text" class="form-control{{ $errors->has('username') || $errors->has('email') ? ' is-invalid' : '' }}" name="login" value="{{ old('username') ?: old('email') }}" placeholder="superadmin" required autofocus>
 
                                 @if ($errors->has('username') || $errors->has('email'))
                                     <span class="invalid-feedback" role="alert">
@@ -30,7 +30,7 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="12345678">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">

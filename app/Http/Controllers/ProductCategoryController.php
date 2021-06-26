@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\ProductCategory;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductCategoryController extends Controller
 {
@@ -12,9 +14,10 @@ class ProductCategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
-        //
+        // 
     }
 
     /**
@@ -35,7 +38,24 @@ class ProductCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Product::create(['product' => $request->productname]);
+
+        $product_id = 'App\Models\Product'::where('product', $request->productname)->first()->id;
+
+        $arraycount = (count($request->color));
+
+        for ($i = 0; $i < $arraycount; $i++) {
+            ProductCategory::create([
+                'product_id' => $product_id,
+                'product_code' => $request->productcode[$i],
+                'color' => $request->color[$i],
+                'size' => $request->size[$i],
+                'quantity' => $request->quantity[$i],
+                'price' => $request->price[$i]
+            ]);
+        }
+
+        return view('home');
     }
 
     /**

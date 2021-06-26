@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +25,5 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/addproduct', [App\Http\Controllers\ProductController::class, 'index'])->name('addproduct');
+
+Route::post('saveproducts', [App\Http\Controllers\ProductCategoryController::class, 'store'])->name('saveproducts');
