@@ -7,7 +7,11 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between">
                         <div class="pt-2">{{ __('Products table') }}</div>
-                        <div><button type="button" class="btn btn-info">Add new product</button></div>
+                        <a class="btn btn-info" href="{{ url('/addproduct') }}">
+                            {!! '<i
+                            class="fas fa-plus-circle"></i>&nbsp;&nbsp;Add
+                        new product' !!}
+                        </a>
                     </div>
 
                     <div class="card-body">
