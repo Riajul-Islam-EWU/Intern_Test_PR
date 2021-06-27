@@ -39,8 +39,6 @@ class ProductCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $product_code = IdGenerator::generate(['table' => 'product_categories', 'field' => 'product_code', 'length' => 13, 'prefix' => 'Product-']);
-
         Product::create(['product' => $request->productname]);
 
         $product_id = 'App\Models\Product'::where('product', $request->productname)->first()->id;
@@ -48,6 +46,7 @@ class ProductCategoryController extends Controller
         $arraycount = (count($request->color));
 
         for ($i = 0; $i < $arraycount; $i++) {
+            $product_code = IdGenerator::generate(['table' => 'product_categories', 'field' => 'product_code', 'length' => 13, 'prefix' => 'Product-']);
             ProductCategory::create([
                 'product_id' => $product_id,
                 'product_code' => $product_code,

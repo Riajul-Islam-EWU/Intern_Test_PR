@@ -15,9 +15,9 @@
                     </div>
 
                     <div class="card-body">
-                        <table class="mt-3 table table-info table-bordered table-striped yajra-datatable">
+                        <table class="mt-3 table table-warning table-hover table-bordered yajra-datatable">
                             <thead>
-                                <tr>
+                                <tr id="">
                                     <td>ID</td>
                                     <td>Product ID</td>
                                     <td>Product Code</td>
@@ -28,9 +28,7 @@
                                     <td class="text-center">Action</td>
                                 </tr>
                             </thead>
-                            <tbody>
-
-                            </tbody>
+                            <tbody></tbody>
                         </table>
                     </div>
                 </div>
@@ -84,7 +82,26 @@
                     },
                 ]
             });
-
         });
+    </script>
+
+    <script type="text/javascript">
+        $('table').on('click', '.delete', function() {
+            event.preventDefault();
+            let tr = $(this).parent().parent();
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                }
+            });
+
+            $.ajax({
+                url: $(this).attr('href'),
+                type: 'get',
+                success: function(response) {
+                    tr.remove();
+                }
+            });
+        })
     </script>
 @endsection

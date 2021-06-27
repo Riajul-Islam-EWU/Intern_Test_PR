@@ -72,7 +72,7 @@
 
             $('#addmore').click(function() {
                 i++;
-                $('#dynamic_table').append('<tr id="row' + i + '"><td><input class="form-control" type="text" name="productcode[] disabled"></td><td><input class="form-control" type="text" name="color[]" required></td><td><input class="form-control" type="text" name="size[]" required></td><td><input class="form-control" type="text" name="quantity[]" required></td><td><input class="form-control" type="text" name="price[]" required></td><td><button type="button" name="remove" id="' + i + '" class="btn btn-danger d-flex btn_remove"><i class="far fa-trash-alt"></i>&nbsp;&nbsp;Delete</button></td></tr>');
+                $('#dynamic_table').append('<tr id="row' + i + '"><td><input class="form-control" type="text" name="productcode[]" disabled></td><td><input class="form-control" type="text" name="color[]" required></td><td><input class="form-control" type="text" name="size[]" required></td><td><input class="form-control" type="text" name="quantity[]" required></td><td><input class="form-control" type="text" name="price[]" required></td><td><button type="button" name="remove" id="' + i + '" class="btn btn-danger d-flex btn_remove"><i class="far fa-trash-alt"></i>&nbsp;&nbsp;Delete</button></td></tr>');
             });
 
             $(document).on('click', '.btn_remove', function() {

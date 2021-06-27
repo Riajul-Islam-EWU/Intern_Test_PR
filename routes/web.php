@@ -30,3 +30,5 @@ Route::get('/addproduct', [App\Http\Controllers\ProductController::class, 'index
 Route::post('saveproducts', [App\Http\Controllers\ProductCategoryController::class, 'store'])->name('saveproducts');
 
 Route::get('/products', [App\Http\Controllers\HomeController::class, 'getProducts'])->name('products');
+
+Route::get('/delete/{id}', [App\Http\Controllers\HomeController::class, 'deleteProducts'])->name('delete');

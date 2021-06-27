@@ -37,12 +37,23 @@ class HomeController extends Controller
             $data = ProductCategory::latest()->get();
             return DataTables::of($data)
                 ->addIndexColumn()
+
                 ->addColumn('action', function ($row) {
-                    $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
+                    $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-success btn-sm">Edit</a> 
+                    <a href="' . route('delete', $row->id) . '" onclick="deleteProducts(' . $row->id . ')" class="delete btn btn-danger btn-sm">Delete</a>';
                     return $actionBtn;
                 })
                 ->rawColumns(['action'])
                 ->make(true);
         }
+    }
+
+    public function deleteProducts($id)
+    {
+        $productrow = ProductCategory::find($id);
+        $productrow->delete();
+        return response()->json([
+            'success' => 'Data deleted successfully!'
+        ]);
     }
 }
