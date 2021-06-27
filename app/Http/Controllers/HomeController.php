@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Product;
+use App\Models\ProductCategory;
+use Illuminate\Support\Facades\DB;
+use DataTables;
 
 class HomeController extends Controller
 {
@@ -24,5 +29,20 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    public function getProducts(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = ProductCategory::latest()->get();
+            return DataTables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function ($row) {
+                    $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
+                    return $actionBtn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
     }
 }

@@ -58,7 +58,7 @@ class ProductCategoryController extends Controller
             ]);
         }
 
-        return view('home');
+        return redirect()->route('home');
     }
 
     /**

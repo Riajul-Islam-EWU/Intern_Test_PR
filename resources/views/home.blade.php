@@ -15,16 +15,76 @@
                     </div>
 
                     <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
+                        <table class="mt-3 table table-info table-bordered table-striped yajra-datatable">
+                            <thead>
+                                <tr>
+                                    <td>ID</td>
+                                    <td>Product ID</td>
+                                    <td>Product Code</td>
+                                    <td>Color</td>
+                                    <td>Size</td>
+                                    <td>Quantity</td>
+                                    <td>Price</td>
+                                    <td class="text-center">Action</td>
+                                </tr>
+                            </thead>
+                            <tbody>
 
-                        {{ __('You are logged in!') }}
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+
+    <script type="text/javascript">
+        $(function() {
+
+            var table = $('.yajra-datatable').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: "{{ route('products') }}",
+                columns: [{
+                        data: 'DT_RowIndex',
+                        name: 'DT_RowIndex'
+                    },
+                    {
+                        data: 'product_id',
+                        name: 'product_id'
+                    },
+                    {
+                        data: 'product_code',
+                        name: 'product_code'
+                    },
+                    {
+                        data: 'color',
+                        name: 'color'
+                    },
+                    {
+                        data: 'size',
+                        name: 'size'
+                    },
+                    {
+                        data: 'quantity',
+                        name: 'quantity'
+                    },
+                    {
+                        data: 'price',
+                        name: 'price'
+                    },
+                    {
+                        data: 'action',
+                        name: 'action',
+                        orderable: true,
+                        searchable: true
+                    },
+                ]
+            });
+
+        });
+    </script>
 @endsection
